@@ -13,8 +13,8 @@
 				<h1>SNAILTHRONE - Pyramid, SnailFarm and Fomo3D All In One</h1> 
 				<h2>Coming to you on Saturday the 24th, 7PM GMT (2PM EST)</h2>
 			</div><br><br>
-			<img class="roll-in-left" src="snail.png"></img>
-			<img class="roll-in-right" src="egg.png"></img>
+			<p class="big-text">Get Ready To Hatch Eggs</p>
+			<p class="pulse-text"><span id="countdown">?</span></p>			
 			<br><br>
 			<div class="red-container">
 				<h3>While you're waiting, try out the trial version on Ropsten testnet: 
@@ -22,6 +22,42 @@
 				<a href="https://discord.gg/8h3Emyb"><img class="icon heartbeat" src="discord_circle.png"></a><a href="https://twitter.com/EtherSnailFarm"><img class="icon heartbeat" src="twitter_circle.png"></a>
 			</div>
 		</div>
+		<script>
+		var countdownState = 0;
+		initCountdown();
+	
+		//Set game timer
+		function initCountdown(){
+			var currentTime = Date.now();
+			var endTime = new Date('2018-11-24T19:00:00');
+			countdownState = Math.floor((endTime - currentTime) / 1000);
+			updateCountdown();
+		}
 		
+		//Update game timer
+		function updateCountdown(){
+			countdownState = countdownState - 1;
+			
+			var	numhours = Math.floor(countdownState / 3600);
+			var numminutes = Math.floor((countdownState % 3600) / 60);
+			var numseconds = (countdownState % 3600) % 60;
+			
+			if(numseconds < 10) {
+				numseconds = "0" + numseconds;
+			}
+			if(numminutes < 10) {
+				numminutes = "0" + numminutes;
+			}
+			if(numhours < 10) {
+				numhours = "0" + numhours;
+			}
+
+			var countdownString = numhours + ":" + numminutes + ":" + numseconds;
+			var countdowndoc = document.getElementById("countdown");
+			countdowndoc.textContent = countdownString;
+			setTimeout(updateCountdown, 1000);
+		}
+
+		</script>
 	</body>
 </html>
