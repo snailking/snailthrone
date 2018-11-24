@@ -8,7 +8,7 @@ window.addEventListener("load", function() {
         web3.version.getNetwork(function(error, result) {
             if (!error) {
                 if (result == "1") {
-					console.log("Worked!");
+					console.log("Web3 Mainnet successfully loaded!");
                 } else {
                     console.log("Error: you must be on the Mainnet to use this website.");
 					modal2.style.display = "block";
@@ -16,9 +16,9 @@ window.addEventListener("load", function() {
             }
         });
     } else {
-        console.log("Error: web3 library not found.");
+        console.log("Web3 library not found.");
 		modal2.style.display = "block";
-        web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/f423492af8504d94979d522c3fbf3794"));
+        web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/f423492af8504d94979d522c3fbf3794"));
     }
 });
 
@@ -105,7 +105,6 @@ function main(){
     console.log('Main loop started.');
     controlLoop();
 	controlLoopFast();
-	TestEvent();
 }
 
 //Main loop
