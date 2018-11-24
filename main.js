@@ -231,19 +231,20 @@ function updateRoundPot(){
 function updatePharaoh(){
 	var pharaohdoc = document.getElementById('pharaoh');
 	pharaoh(function(req) {
-		a_pharaoh = req.substring(24, 66);
+		a_pharaoh = req.substring(26, 66);
+		var b_pharaoh = "0x" + a_pharaoh;
 		if(god_roundover === false) {
-			if(a_pharaoh === m_account) {
+			if(b_pharaoh === m_account) {
 				pharaohdoc.innerHTML = "YOU<br>Will Ascend to Godhood in";
 			} else {
-			pharaohdoc.innerHTML = a_pharaoh + "<br>Will Ascend to Godhood in";
+			pharaohdoc.innerHTML = b_pharaoh + "<br>Will Ascend to Godhood in";
 			}
 		}
 		else {
-			if(a_pharaoh === m_account) {
+			if(b_pharaoh === m_account) {
 				pharaohdoc.innerHTML = "YOU ARE THE SNAILGOD!<br>Claim your winnings by starting a new round.";
 			} else {
-			pharaohdoc.innerHTML = a_pharaoh + " is the SnailGod!<br>To the victor the spoils. Start a new round to be next in line!";
+			pharaohdoc.innerHTML = b_pharaoh + " is the SnailGod!<br>To the victor the spoils. Start a new round to be next in line!";
 			}
 		}
 	});
