@@ -7,10 +7,10 @@ window.addEventListener("load", function() {
         web3 = new Web3(web3.currentProvider);
         web3.version.getNetwork(function(error, result) {
             if (!error) {
-                if (result == "3") {
+                if (result == "1") {
 					console.log("Worked!");
                 } else {
-                    console.log("Error: you must be on Ropsten Network to use this website.");
+                    console.log("Error: you must be on the Mainnet to use this website.");
 					modal2.style.display = "block";
                 }
             }
