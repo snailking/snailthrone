@@ -530,6 +530,9 @@ function updateSellEstimate(){
 //Player input on sacrifice
 function updateFieldSacrifice2(){
 	f_sacrifice = document.getElementById('fieldSacrifice').value;
+	if(f_sacrifice < 40) {
+		f_sacrifice = 40;
+	}
 	var fieldsacrifice2doc = document.getElementById('fieldSacrifice2');
 	fieldsacrifice2doc.textContent = f_sacrifice;
 }
