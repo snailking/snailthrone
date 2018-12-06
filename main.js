@@ -530,9 +530,6 @@ function updateSellEstimate(){
 //Player input on sacrifice
 function updateFieldSacrifice2(){
 	f_sacrifice = document.getElementById('fieldSacrifice').value;
-	if(f_sacrifice < a_pharaohReq2){
-		f_sacrifice = a_pharaohReq2;
-	}
 	var fieldsacrifice2doc = document.getElementById('fieldSacrifice2');
 	fieldsacrifice2doc.textContent = f_sacrifice;
 }
@@ -553,7 +550,13 @@ function webBuySnail(){
     });
 }
 
-//Sacrifice snail tokens
+//Baseline sacrifice using pharaohReq
+function webClaimThrone(){
+	BecomePharaoh(a_pharaohReq2, function(){
+	});
+}
+
+//Sacrifice snail tokens using player input
 function webSacrificeSnail(){
 	BecomePharaoh(f_sacrifice, function(){
 	});
