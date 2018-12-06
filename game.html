@@ -21,6 +21,16 @@
 				<p>If you have MetaMask, make sure you're connected to the Mainnet Network.</p>
 			</div>
 		</div>
+		<!-- SACRIFICE MODAL, TO WARN PLAYERS. -->
+		<div id="modal3" class="modal">
+			<div class="jumbotron modal-content" align="center">
+				<span id="close3" class="close">&times;</span><h3 align="center">YOUR SACRIFICE IS BELOW THE PHARAOH REQUIREMENT.</h2>
+				<br><p>Due to the latency of Ethereum, this can make sense.
+				<p>However, if you're not sure why you're seeing this message it's likely you will not become pharaoh</p>
+				<p>Close this, or simply use the "Claim Throne" button on the pyramid.</p>
+				<p><button type="button" class="btn btn-danger" onclick="CloseModal3()">Get me out of here!</button><button type="button" class="btn btn-danger" onclick="webSacrificeSnail()">I know what I'm doing.</button></p>
+			</div>
+		</div>
 		<!-- MODAL. EXPLAINS EVERYTHING. OPENED BY HELP. -->
 		<div id="modal" class="modal">
 			<div class="jumbotron modal-content">
@@ -151,7 +161,7 @@
 						<br><small>(Requirement jumps to <span id="pharaohestimate">[Loading...]</span> snails)</small>
 					</div>
 					<div class="card-footer">
-						<button type="button" class="btn btn-danger" onclick="webSacrificeSnail()">Sacrifice <span id="fieldSacrifice2">[Loading...]</span> Snails</button>
+						<button type="button" class="btn btn-danger" onclick="CheckSacrifice()">Sacrifice <span id="fieldSacrifice2">[Loading...]</span> Snails</button>
 						
 					</div>
 				</div>

@@ -65,6 +65,21 @@ var m_account = "waiting for web3";
 
 /* MODAL */
 
+// Sacrifice modal
+var modal3 = document.getElementById("modal3");
+
+// Get the <span> element that closes the modal
+var span3 = document.getElementById("close3");
+
+// When the user clicks on <span> (x), close the modal
+span3.onclick = function() {
+    modal3.style.display = "none";
+}
+
+function CloseModal3() {
+	modal3.style.display = "none";
+}
+
 // Get the modal
 var modal = document.getElementById("modal");
 
@@ -94,6 +109,7 @@ window.onclick = function(event) {
     if (event.target == modal || event.target == modal2) {
         modal.style.display = "none";
 		modal2.style.display = "none";
+		modal3.style.display = "none";
     }
 }
 
@@ -560,6 +576,14 @@ function webClaimThrone(){
 }
 
 //Sacrifice snail tokens using player input
+function CheckSacrifice(){
+	if(f_sacrifice < a_pharaohReq2) {
+		modal3.style.display = "block";
+	} else {
+		webSacrificeSnail();
+	}
+}
+
 function webSacrificeSnail(){
 	BecomePharaoh(f_sacrifice, function(){
 	});
