@@ -138,6 +138,12 @@ code {
 	box-shadow: 0 0 4px 4px maroon;
 }
 
+.social-align-right {
+	width: 48px;
+	float: right;
+	margin: 1px;
+}
+
 .icon-align-right {
 	width: 48px;
 	float: right;
