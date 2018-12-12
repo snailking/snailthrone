@@ -1,5 +1,7 @@
 /* WEB3 DETECTION */
 
+var web3;
+
 var modal2 = document.getElementById("modal2");
 
 window.addEventListener("load", function() {
@@ -11,6 +13,7 @@ window.addEventListener("load", function() {
 					console.log("Web3 Mainnet successfully loaded!");
                 } else {
                     console.log("Error: you must be on the Mainnet to use this website.");
+					web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/f423492af8504d94979d522c3fbf3794"));
 					modal2.style.display = "block";
                 }
             }
