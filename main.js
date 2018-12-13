@@ -11,7 +11,7 @@ window.addEventListener("load", function() {
         web3 = new Web3(web3.currentProvider);
         web3.version.getNetwork(function(error, result) {
             if (!error) {
-                if (result == "3") {
+                if (result == "1") {
 					console.log("Web3 Testnet successfully loaded!");
                 } else {
                     console.log("Error: you must be on the Mainnet to use this website.");
