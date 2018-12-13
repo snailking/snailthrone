@@ -1,3 +1,5 @@
+contractAddress="0x261d650a521103428C6827a11fc0CBCe96D74DBc" // MAINNET
+
 /* WEB3 DETECTION */
 
 var web3;
@@ -9,8 +11,8 @@ window.addEventListener("load", function() {
         web3 = new Web3(web3.currentProvider);
         web3.version.getNetwork(function(error, result) {
             if (!error) {
-                if (result == "1") {
-					console.log("Web3 Mainnet successfully loaded!");
+                if (result == "3") {
+					console.log("Web3 Testnet successfully loaded!");
                 } else {
                     console.log("Error: you must be on the Mainnet to use this website.");
 					web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/f423492af8504d94979d522c3fbf3794"));
@@ -42,6 +44,7 @@ var god_numminutes = 0;
 var god_numseconds = 0;
 
 var god_roundover = false;
+var godtimer_lastminute = 16;
 
 var godtimerdoc;
 var playereggdoc;
@@ -284,21 +287,24 @@ function updateGodTimer(){
 	var blocktime = Math.round((new Date()).getTime() / 1000); //current blocktime should be Unix timestamp
 	godtimerdoc = document.getElementById('godtimer');
 	godTimer(function(req) {
-		godtimer_in_seconds = req - blocktime; //godTimer is the planned blocktime for the end
-		
+		godtimer_in_seconds = req - blocktime; //godTimer is the planned blocktime for the end		
 		//Check if round is over
-		if(godtimer_in_seconds <= 0){
-			godtimerdoc.textContent = "[Round is over. Press the magic button below!]";
-			god_roundover = true;
-		} else {
+		if(godtimer_in_seconds > 1){
+			godtimer_lastminute = 0;
 			//Convert result to hour minute second format
 			god_numhours = Math.floor(godtimer_in_seconds / 3600);
 			god_numminutes = Math.floor((godtimer_in_seconds % 3600) / 60);
 			god_numseconds = (godtimer_in_seconds % 3600) % 60;
-
 			a_godTimer = god_numhours + "h " + god_numminutes + "m " + god_numseconds + "s ";
 			godtimerdoc.textContent = a_godTimer;
 			god_roundover = false;
+		} else if(godtimer_in_seconds <= 0 && godtimer_lastminute < 16){ //64seconds of delay to make sure the round is over
+			godtimerdoc.textContent = "[Waiting for blockchain confirmation...]";
+			godtimer_lastminute++;
+			god_roundover = false;
+		} else {
+			godtimerdoc.textContent = "[Round is over. Press the magic button below!]";
+			god_roundover = true;
 		}
 	});
 }
@@ -633,7 +639,7 @@ function webAscendGod(){
 
 abiDefinition=[{"constant": false,"inputs": [],"name": "ClaimDivs","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": true,"inputs": [],"name": "ComputeMyDivs","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [],"name": "AscendGod","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": true,"inputs": [],"name": "godTimer","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [{"name": "_snails","type": "uint256"}],"name": "BecomePharaoh","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": true,"inputs": [{"name": "","type": "address"}],"name": "hatcherySnail","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [],"name": "FeedEgg","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": true,"inputs": [],"name": "PHARAOH_REQ_START","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "GetMySnails","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [{"name": "","type": "address"}],"name": "lastHatch","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "TOKEN_MAX_BUY","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "frogPot","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [{"name": "","type": "address"}],"name": "claimedDivs","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "SNAIL_REQ_REF","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [{"name": "_ref","type": "address"}],"name": "BuySnail","outputs": [],"payable": true,"stateMutability": "payable","type": "function"},{"constant": true,"inputs": [],"name": "gameStarted","outputs": [{"name": "","type": "bool"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "pharaoh","outputs": [{"name": "","type": "address"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [{"name": "","type": "address"}],"name": "playerEarnings","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "snailPot","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "GOD_TIMER_START","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "TOKEN_PRICE_FLOOR","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "pharaohReq","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [],"name": "HatchEgg","outputs": [],"payable": true,"stateMutability": "payable","type": "function"},{"constant": true,"inputs": [],"name": "godPot","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [],"name": "StartGame","outputs": [],"payable": true,"stateMutability": "payable","type": "function"},{"constant": true,"inputs": [],"name": "lastClaim","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [],"name": "WithdrawEarnings","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": true,"inputs": [{"name": "_ether","type": "uint256"}],"name": "ComputeBuy","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [{"name": "_tokensSold","type": "uint256"}],"name": "SellSnail","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": true,"inputs": [],"name": "TIME_TO_HATCH_1SNAIL","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "ComputePharaohReq","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "ComputeTokenPrice","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "godRound","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "TOKEN_PRICE_MULT","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "divsPerSnail","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "GOD_TIMER_BOOST","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "GOD_TIMER_INTERVAL","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "GetMyEarnings","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [{"name": "adr","type": "address"}],"name": "ComputeMyEggs","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "gameOwner","outputs": [{"name": "","type": "address"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "GetContractBalance","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "maxSnail","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"inputs": [],"payable": false,"stateMutability": "nonpayable","type": "constructor"},{"payable": true,"stateMutability": "payable","type": "fallback"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "ethreward","type": "uint256"}],"name": "WithdrewEarnings","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "ethreward","type": "uint256"}],"name": "ClaimedDivs","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "ethspent","type": "uint256"},{"indexed": false,"name": "snail","type": "uint256"}],"name": "BoughtSnail","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "ethreward","type": "uint256"},{"indexed": false,"name": "snail","type": "uint256"}],"name": "SoldSnail","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "ethspent","type": "uint256"},{"indexed": false,"name": "snail","type": "uint256"}],"name": "HatchedSnail","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "ethreward","type": "uint256"},{"indexed": false,"name": "egg","type": "uint256"}],"name": "FedFrogking","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "ethreward","type": "uint256"},{"indexed": true,"name": "round","type": "uint256"}],"name": "Ascended","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": true,"name": "round","type": "uint256"}],"name": "BecamePharaoh","type": "event"},{"anonymous": false,"inputs": [{"indexed": false,"name": "ethreward","type": "uint256"}],"name": "NewDivs","type": "event"}]
 
-contractAddress="0x261d650a521103428C6827a11fc0CBCe96D74DBc" // MAINNET
+
 
 var contractAbi = web3.eth.contract(abiDefinition);
 var myContract = contractAbi.at(contractAddress);
