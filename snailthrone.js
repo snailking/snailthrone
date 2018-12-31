@@ -1390,7 +1390,7 @@ hatchEvent.watch(function(error, result){
 		//console.log(result);
 		if(checkHash(storetxhash, result.transactionHash) != 0) {
 			date24();
-			eventdoc.innerHTML += "<br>[" + datetext + "] " + result.args.player + " hatched " + result.args.snail + " snails for " + formatEthValue2(web3.fromWei(result.args.ethspent,'ether')) + " ETH." ;
+			eventdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " hatched " + result.args.snail + " snails for " + formatEthValue2(web3.fromWei(result.args.ethspent,'ether')) + " ETH." ;
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1403,7 +1403,7 @@ soldEvent.watch(function(error, result){
 		//console.log(result);
 		if(checkHash(storetxhash, result.transactionHash) != 0) {
 			date24();
-			eventdoc.innerHTML += "<br>[" + datetext + "] " + result.args.player + " sold " + result.args.snail + " snails for " + formatEthValue2(web3.fromWei(result.args.ethreward,'ether')) + " ETH." ;
+			eventdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " sold " + result.args.snail + " snails for " + formatEthValue2(web3.fromWei(result.args.ethreward,'ether')) + " ETH." ;
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1416,7 +1416,7 @@ boughtEvent.watch(function(error, result){
 		//console.log(result);
 		if(checkHash(storetxhash, result.transactionHash) != 0) {
 			date24();
-			eventdoc.innerHTML += "<br>[" + datetext + "] " + result.args.player + " bought " + result.args.snail + " snails for " + formatEthValue2(web3.fromWei(result.args.ethspent,'ether')) + " ETH." ;
+			eventdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " bought " + result.args.snail + " snails for " + formatEthValue2(web3.fromWei(result.args.ethspent,'ether')) + " ETH." ;
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1429,7 +1429,7 @@ newpharaohEvent.watch(function(error, result){
 		//console.log(result);
 		if(checkHash(storetxhash, result.transactionHash) != 0) {
 			date24();
-			eventdoc.innerHTML += "<br>[" + datetext + "] " + result.args.player + " sacrifices snails and claims the throne!" ;
+			eventdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " sacrifices snails and claims the throne!" ;
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1442,7 +1442,7 @@ withdrewEvent.watch(function(error, result){
 		//console.log(result);
 		if(checkHash(storetxhash, result.transactionHash) != 0) {
 			date24();
-			eventdoc.innerHTML += "<br>[" + datetext + "] " + result.args.player + " withdrew " + formatEthValue2(web3.fromWei(result.args.ethreward,'ether')) + " ETH." ;
+			eventdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " withdrew " + formatEthValue2(web3.fromWei(result.args.ethreward,'ether')) + " ETH." ;
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1455,7 +1455,7 @@ claimedEvent.watch(function(error, result){
 		//console.log(result);
 		if(checkHash(storetxhash, result.transactionHash) != 0) {
 			date24();
-			eventdoc.innerHTML += "<br>[" + datetext + "] " + result.args.player + " claimed " + formatEthValue2(web3.fromWei(result.args.ethreward,'ether')) + " ETH in divs." ;
+			eventdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " claimed " + formatEthValue2(web3.fromWei(result.args.ethreward,'ether')) + " ETH in divs." ;
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1468,7 +1468,7 @@ fedEvent.watch(function(error, result){
 		//console.log(result);
 		if(checkHash(storetxhash, result.transactionHash) != 0) {
 			date24();
-			eventdoc.innerHTML += "<br>[" + datetext + "] " + result.args.player + " fed the Frogking " + result.args.egg + " eggs and won " + formatEthValue2(web3.fromWei(result.args.ethreward,'ether')); + " ETH." ;
+			eventdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " fed the Frogking " + result.args.egg + " eggs and won " + formatEthValue2(web3.fromWei(result.args.ethreward,'ether')); + " ETH." ;
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1482,7 +1482,7 @@ ascendedEvent.watch(function(error, result){
 		if(checkHash(storetxhash, result.transactionHash) != 0) {
 			date24();
 			var _roundwon = result.args.round - 1;
-			eventdoc.innerHTML += "<br>[" + datetext + "] " + result.args.player + " ASCENDS!<br>The new SnailGod wins Round " + _roundwon + " and claims " + formatEthValue2(web3.fromWei(result.args.ethreward,'ether')) + " ETH." ;
+			eventdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " ASCENDS!<br>The new SnailGod wins Round " + _roundwon + " and claims " + formatEthValue2(web3.fromWei(result.args.ethreward,'ether')) + " ETH." ;
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
