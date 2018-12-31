@@ -248,7 +248,7 @@ function refreshData(){
 	updatePlayerEarning();
 	updatePlayerRef();
 	updateButton();
-	runLog();
+	//runLog();
 }
 
 //Refreshes some game data faster

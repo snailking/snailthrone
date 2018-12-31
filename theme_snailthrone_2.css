@@ -310,7 +310,7 @@ a:hover {
 /* Added since _event */
 
 .scroll-box {
-	width: 80%; 
+	width: 100%; 
 	overflow: auto; 
 	overflow-x: hidden; 
 	height: 110px;
