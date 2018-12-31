@@ -1363,7 +1363,7 @@ function runLog(){
 							eventdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " claimed " + formatEthValue2(web3.fromWei(result[i].args.ethreward,'ether')) + " ETH in divs." ;
 
 						} else if(result[i].event == "FedFrogking"){
-							eventdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " fed the Frogking " + result[i].args.egg + " eggs and won " + formatEthValue2(web3.fromWei(result[i].args.ethreward,'ether')); + " ETH." ;
+							eventdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " fed the Frogking " + result[i].args.egg + " eggs and won " + formatEthValue2(web3.fromWei(result[i].args.ethreward,'ether')) + " ETH." ;
 
 						} else if(result[i].event == "Ascended"){
 							var _roundwon = result[i].args.round - 1;
@@ -1468,7 +1468,7 @@ fedEvent.watch(function(error, result){
 		//console.log(result);
 		if(checkHash(storetxhash, result.transactionHash) != 0) {
 			date24();
-			eventdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " fed the Frogking " + result.args.egg + " eggs and won " + formatEthValue2(web3.fromWei(result.args.ethreward,'ether')); + " ETH." ;
+			eventdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " fed the Frogking " + result.args.egg + " eggs and won " + formatEthValue2(web3.fromWei(result.args.ethreward,'ether')) + " ETH." ;
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
