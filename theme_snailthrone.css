@@ -40,18 +40,37 @@
 }
 
 body {
-	/*background-image: url(img/mayan_pyramid3.png);
-	background-position: 50% 20%; /* Center the image */
-	background-repeat: no-repeat; /* Do not repeat the image */
+	background-image: url("img/red_background.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
 	background-color: black;
 	color: white;
+}
+
+@media only screen and (max-width:900px), (max-device-width:900px){
+body:before {
+  content: "";
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  background: url("img/red_background.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 }
 
 .pyramid {
 	background-image: url(img/mayan_pyramid3.png);
 	background-position: center center;
     background-repeat: no-repeat;
-	background-color: black;
+	background-color: #9d2020;
 }
 
 .ether {
@@ -136,6 +155,12 @@ code {
 
 .btn {
 	box-shadow: 0 0 4px 4px maroon;
+}
+
+.social-align-right {
+	width: 48px;
+	float: right;
+	margin: 1px;
 }
 
 .icon-align-right {
@@ -227,7 +252,7 @@ code {
 }
 
 a {
-	color:  maroon;
+	color: red;
 }
 
 a:hover {
@@ -299,4 +324,23 @@ a:hover {
 
 .answer {
 	padding: 1rem;
+	background-color: black;
+}
+
+/* Added since _event */
+
+.scroll-box {
+	width: 100%; 
+	overflow: auto; 
+	overflow-x: hidden; 
+	height: 110px;
+}
+
+.card-footer {
+	background-color: black;
+	padding-bottom: 20px;
+}
+
+.card-body {
+	padding-bottom: 0px;
 }
