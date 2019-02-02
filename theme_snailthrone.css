@@ -1,13 +1,26 @@
+/* colors used 
+bb2929
+250405
+
+*/
+
+
 
 .jumbotron {
 	background-color: #250405;
 	position: center;
 	margin-left: auto;
 	margin-right: auto;
-	border: 10px double maroon;
+	border: 32px solid;
+	border-image: url("img/border_1.png") 48 round;
 	padding: 1rem 1rem;
 	margin-bottom: 0.5rem;
 	border-radius: 0.2rem;
+}
+
+.alternate{
+	border: 32px solid;
+	border-image: url("img/border_2.png") 48 round;
 }
 
 @media (min-width: 576px) {
@@ -125,6 +138,12 @@ code {
   border: 4px dotted maroon;
 }
 
+.snail{
+	background-color: black;
+	border: 8px solid;
+	border-image: url("img/border_2.png") 16 round;
+}
+
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
@@ -155,6 +174,13 @@ code {
 
 .btn {
 	box-shadow: 0 0 4px 4px maroon;
+	border: 8px solid;
+	border-image: url("img/border_2.png") 16 round;
+	background-color: #bb2929;
+}
+
+.btn:hover{
+	background-color: #250405;
 }
 
 .social-align-right {
