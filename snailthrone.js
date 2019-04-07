@@ -232,7 +232,7 @@ function getQueryVariable(variable){
 }
 
 function copyRef() {
-  var copyText = document.getElementById("copytextthing");
+  copyText.value = playerreflinkdoc.textContent;
   copyText.style.display="block"
   copyText.select();
   document.execCommand("Copy");
@@ -244,7 +244,6 @@ function copyRef() {
 var playerreflinkdoc = document.getElementById('playerreflink'); 
 var a_refLink = window.location.protocol + '//' + window.location.host + window.location.pathname + "?ref=" + web3.eth.accounts[0];
 var copyText = document.getElementById("copytextthing"); 
-copyText.value = playerreflinkdoc.textContent;
 
 /* STATE UPDATES */
 
